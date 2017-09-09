@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Index</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}"> -->
+</head>
+
+<body>
+    <h1>Welcome!</h1>
+    <p>
+        <form action='/process' method='post'>
+            <ul style = "list-style: none;">
+                <li>Gimme Yo Name: <input type='text' name="name"></li>
+                <li>Where you from:
+                    <select name = "location">
+                        <option value="California">California</option>
+                        <option value="Another State">Another State</option>
+                        <option value="Another Country">Another Country</option>
+                        <option value="Space">Outer Space</option>
+                    </select>
+                </li>
+                <li>Favorite Food:
+                    <select name = "food">
+                        <option value="Pizza">Pizza</option>
+                        <option value="Ice Cream">Ice Cream</option>
+                        <option value="Mercedes">Korean BBQ</option>
+                        <option value="Sandwich">Sandwich</option>
+                    </select>
+                </li>
+                <li>Comments (optional):</li>
+                    <textarea rows="4" cols="50" name="comment">
+                    </textarea>
+                    <input type='submit' value='submit'>
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <li>{{message}}</li>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </ul>
+        </form>
+    </p>
+</body>
+
+</html>
